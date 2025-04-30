@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Image Predictor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #be4fe0, #4c3cff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      width: 90%;
+      max-width: 500px;
+      padding: 40px 30px;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    form {
+      margin-bottom: 30px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 20px auto;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="file"]:hover {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    button {
+      background: #fff;
+      color: #5c00b3;
+      font-weight: bold;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background: #ffd6ff;
+      color: #40006b;
+      transform: scale(1.05);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 20px;
+      color: #ffffff;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>🖼️ AI Image Predictor</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">🔮 Predict</button>
+    </form>
+
+    {% if prediction %}
+      <h2>✨ Prediction: <span>{{ prediction }}</span></h2>
+      <img src="{{ img_path }}" alt="Predicted Image">
+    {% endif %}
+  </div>
+</body>
+</html>
